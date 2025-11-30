@@ -1,0 +1,100 @@
+### Health check
+GET http://localhost:3000/api/health
+Accept: application/json
+
+###
+
+### Get all events
+GET http://localhost:3000/api/events
+Accept: application/json
+
+###
+
+### Get today's events (server date or pass query date)
+GET http://localhost:3000/api/events/today
+Accept: application/json
+
+###
+
+# Example: override today's date (useful when testing)
+GET http://localhost:3000/api/events/today?date=2025-11-16
+Accept: application/json
+
+###
+
+### Search events by date or category or search term
+GET http://localhost:3000/api/events?date=2025-11-16
+Accept: application/json
+
+###
+
+GET http://localhost:3000/api/events?category=Music
+Accept: application/json
+
+###
+
+GET http://localhost:3000/api/events?search=Yoga
+Accept: application/json
+
+###
+
+### Get single event by id
+GET http://localhost:3000/api/events/1
+Accept: application/json
+
+###
+
+### Create event (admin)
+POST http://localhost:3000/api/events
+Content-Type: application/json
+
+{
+  "title": "Test Event",
+  "date": "2025-12-20",
+  "startTime": "10:00",
+  "endTime": "12:00",
+  "location": "Test Hall",
+  "category": "Test",
+  "description": "A test event",
+  "capacity": 10
+}
+
+###
+
+### Update event
+PUT http://localhost:3000/api/events/22
+Content-Type: application/json
+
+{
+  "title": "Updated Morning Yoga",
+  "capacity": 25
+}
+
+###
+
+### Delete event
+DELETE http://localhost:3000/api/events/22
+
+###
+
+### Register for an event
+POST http://localhost:3000/api/registrations
+Content-Type: application/json
+
+{
+  "eventId": 1,
+  "fullName": "Test Person",
+  "email": "test.person@example.com"
+}
+
+###
+
+### Get registrations for an event
+GET http://localhost:3000/api/registrations/event/1
+Accept: application/json
+
+###
+
+### Get registrations for a user by email (URL encode email)
+GET http://localhost:3000/api/registrations/user/ben.t%40example.com
+Accept: application/json
