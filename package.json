@@ -10,7 +10,8 @@
     "inst": "npm install && cd server && npm install",
     "seed": "cd server && npm install && npm run seed",
     "start:server": "cd server && npm start",
-    "dev": "concurrently \"npm run web\" \"npm run start:server\""
+    "dev": "concurrently \"npm run web\" \"npm run start:server\"",
+    "expo": "concurrently \"npm run start:server\" \"expo start\""
   },
   "dependencies": {
     "@expo/metro-runtime": "~6.1.2",
