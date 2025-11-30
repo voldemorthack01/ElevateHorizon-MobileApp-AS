@@ -22,10 +22,10 @@ export default function EventRegistrationScreen({ route, navigation }) {
     try {
       const result = await addRegistration(event.id, name, email);
       if (result.success) {
-        setMessage("Registration successful!");
+        setMessage(`Registration successful! - you are booked for ${event.title}.\nNow returning to events list...`);
         setTimeout(() => {
           navigation.reset({ index: 0, routes: [{ name: "EventsList" }] });
-        }, 1500);
+        }, 5500);
       } else {
         setMessage(result.error || "Registration failed");
       }

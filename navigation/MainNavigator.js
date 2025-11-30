@@ -8,31 +8,27 @@ import HomeScreen from "../screens/HomeScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import EventsNavigator from "./EventsNavigator";
 
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+const Tab = createBottomTabNavigator();
+
 export default function MainNavigator() {
-  const [index, setIndex] = useState(0);
-
-  const [routes] = useState([
-    { key: "home", title: "Home", icon: "home" },
-    { key: "events", title: "Events", icon: "event" },
-    { key: "settings", title: "Settings", icon: "settings" },
-  ]);
-
-  const renderScene = BottomNavigation.SceneMap({
-    home: HomeScreen,
-    events: EventsNavigator,
-    settings: SettingsScreen,
-  });
-
   return (
-    <BottomNavigation
-      navigationState={{ index, routes }}
-      onIndexChange={setIndex}
-      renderScene={renderScene}
-      shifting={false}
-      sceneAnimationEnabled
-      renderIcon={({ route, color }) => (
-        <MaterialIcons name={route.icon} size={26} color={color} />
-      )}
-    />
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        headerShown: false,
+        tabBarIcon: ({ color, size }) => {
+          let iconName;
+          if (route.name === "Home") iconName = "home";
+          else if (route.name === "Events") iconName = "event";
+          else if (route.name === "Settings") iconName = "settings";
+          return <MaterialIcons name={iconName} size={26} color={color} />;
+        },
+      })}
+    >
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Events" component={EventsNavigator} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+    </Tab.Navigator>
   );
 }
