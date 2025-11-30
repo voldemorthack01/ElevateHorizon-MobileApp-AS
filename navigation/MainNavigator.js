@@ -7,7 +7,6 @@ import { MaterialIcons } from "@expo/vector-icons";
 import HomeScreen from "../screens/HomeScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import EventsNavigator from "./EventsNavigator";
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 export default function MainNavigator() {
   const [index, setIndex] = useState(0);
