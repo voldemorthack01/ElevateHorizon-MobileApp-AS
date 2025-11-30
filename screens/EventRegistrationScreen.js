@@ -1,14 +1,75 @@
-import React, { useEffect, useState } from 'react';
-import {Avatar, Card, IconButton, FAB, Snackbar, TextInput, Dialog, Portal, Button, Text, Surface, Divider, Searchbar, useTheme } from "react-native-paper";
-import {View, Image, TouchableOpacity, StyleSheet, ScrollView, ActivityIndicator} from "react-native";
-// import { TouchableOpacity } from "react-native-gesture-handler";
-import { useIsFocused } from "@react-navigation/native";
-import { Dropdown } from "react-native-paper-dropdown";
+import React, { useState } from "react";
+import { View, ScrollView, ActivityIndicator } from "react-native";
+import { Surface, Text, TextInput, Button } from "react-native-paper";
+import { addRegistration } from "../utils/api";
+import { useAppPreferences } from "../components/AppPreferences";
 
-export default function EventRegistrationScreen(props) {
+export default function EventRegistrationScreen({ route, navigation }) {
+  const { theme } = useAppPreferences();
+  const { event } = route.params;
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState(null);
+
+  const handleRegister = async () => {
+    if (!name || !email) {
+      setMessage("Please fill in all fields");
+      return;
+    }
+    setLoading(true);
+    try {
+      const result = await addRegistration(event.id, name, email);
+      if (result.success) {
+        setMessage("Registration successful!");
+        setTimeout(() => {
+          navigation.reset({ index: 0, routes: [{ name: "EventsList" }] });
+        }, 1500);
+      } else {
+        setMessage(result.error || "Registration failed");
+      }
+    } catch (err) {
+      setMessage("Network error during registration");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) return <ActivityIndicator style={{ marginTop: 50 }} />;
+
   return (
-    <Surface style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text  variant='displaySmall'>EventRegistrationScreen</Text>
+    <Surface style={{ flex: 1, padding: 16 }} elevation={5}>
+      <ScrollView>
+        <Text variant="headlineLarge" style={{ marginBottom: 12 }}>
+          Register for: {event.title}
+        </Text>
+        <Text>Available Spots: {event.spotsRemaining}</Text>
+
+        <TextInput
+          label="Name"
+          value={name}
+          onChangeText={setName}
+          style={{ marginBottom: 12 }}
+        />
+        <TextInput
+          label="Email"
+          value={email}
+          onChangeText={setEmail}
+          keyboardType="email-address"
+          style={{ marginBottom: 12 }}
+        />
+
+        {message && (
+          <Text style={{ marginBottom: 12, color: message.includes("success") ? "green" : "red" }}>
+            {message}
+          </Text>
+        )}
+
+        <Button mode="contained" onPress={handleRegister} disabled={event.spotsRemaining <= 0}>
+          Submit
+        </Button>
+      </ScrollView>
     </Surface>
-  )
+  );
 }
