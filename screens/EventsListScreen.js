@@ -107,18 +107,34 @@ export default function EventsListScreen({ navigation, route }) {
       />
 
       {/* Filter buttons */}
-      <View style={{ flexDirection: "row", flexWrap: "wrap", marginBottom: 16 }}>
+      <View 
+      style={{ 
+        flexDirection: "row", 
+        flexWrap: "wrap",
+        justifyContent: "center", // centers buttons horizontally
+        marginBottom: 16 
+        }}>
         {categories.map((cat) => (
-          <View key={cat} style={{ width: "30%", marginBottom: 8 }}>
+          <View key={cat} style={{ width: "45%", marginBottom: 10 }}>
             <Button
               mode="contained"
               onPress={() => setSelectedCategory(cat)}
               style={{
-                margin: 2,
-                backgroundColor: selectedCategory === cat ? theme.colors.buttonBackground : theme.colors.onButtonBackground, // selected vs unselected
+                margin: 4,
+                justifyContent: "center",
+                backgroundColor:
+                  selectedCategory === cat 
+                  ? theme.colors.buttonBackground // selected
+                  : theme.colors.onButtonBackground, // unselected
+                minWidth: 140, // ensures text fits
+                height: 45,
               }}
               labelStyle={{
                 color: selectedCategory === cat ? "white" : "black", // text color
+                fontSize: 16,
+                fontWeight: "bold",
+                textAlign: "center",
+                flexShrink: 1, // prevents truncation
               }}
             >
               {cat}
