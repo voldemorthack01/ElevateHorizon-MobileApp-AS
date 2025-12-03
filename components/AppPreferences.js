@@ -104,7 +104,7 @@ export const AppPreferencesProvider = ({ children }) => {
   const theme = {
     ...(isDarkTheme ? darkTheme : lightTheme),
     fontSizes: fontSizesMap[fontSizeKey],
-    // 🔥 Full Material 3 typography (required by React Native Paper v3)
+    // Full Material 3 typography (required by React Native Paper v3)
     fonts: generateTypography(fontSizesMap[fontSizeKey]),
   };
 

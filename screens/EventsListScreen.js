@@ -37,7 +37,7 @@ export default function EventsListScreen({ navigation, route }) {
 
   if (loading) return <ActivityIndicator style={{ marginTop: 50 }} />;
 
-  // ✅ Apply search + filter
+  // Apply search + filter
   let filteredEvents = [...events];
 
   // Filter by category
@@ -111,9 +111,15 @@ export default function EventsListScreen({ navigation, route }) {
         {categories.map((cat) => (
           <View key={cat} style={{ width: "30%", marginBottom: 8 }}>
             <Button
-              mode={selectedCategory === cat ? "contained" : "outlined"}
+              mode="contained"
               onPress={() => setSelectedCategory(cat)}
-              style={{ margin: 2 }}
+              style={{
+                margin: 2,
+                backgroundColor: selectedCategory === cat ? theme.colors.buttonBackground : theme.colors.onButtonBackground, // selected vs unselected
+              }}
+              labelStyle={{
+                color: selectedCategory === cat ? "white" : "black", // text color
+              }}
             >
               {cat}
             </Button>

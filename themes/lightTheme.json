@@ -33,6 +33,8 @@
     "inverseSurface": "rgb(48, 48, 52)",
     "inverseOnSurface": "rgb(243, 239, 244)",
     "inversePrimary": "rgb(208, 188, 255)",
+    "onButtonBackground": "rgb(208, 188, 255)",
+    "buttonBackground": "rgb(103, 80, 164)",
     "elevation": {
       "level0": "transparent",
       "level1": "rgb(247, 243, 252)",
