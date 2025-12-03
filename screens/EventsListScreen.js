@@ -101,8 +101,9 @@ export default function EventsListScreen({ navigation, route }) {
           padding: 8,
           borderRadius: 6,
           borderWidth: 1,
-          borderColor: "#ddd",
+          borderColor: theme.colors.outline,
           marginBottom: 16,
+          backgroundColor: theme.colors.surface
         }}
       />
 
