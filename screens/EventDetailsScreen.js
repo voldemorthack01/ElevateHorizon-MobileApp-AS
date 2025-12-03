@@ -34,34 +34,34 @@ export default function EventDetailsScreen({ route, navigation }) {
       <Card style={{ padding: 16, borderRadius: 12 }} elevation={3}>
         <Text
           variant="headlineLarge"
-          style={{ marginBottom: 12, fontSize: 20, fontWeight: "bold" }}
+          style={{ marginBottom: 12, fontSize: theme.fontSizes.headlineLarge, fontWeight: "bold" }}
         >
           {event.title}
         </Text>
 
-        <Text style={{ fontSize: 16, marginBottom: 4 }}>
+        <Text style={{ fontSize: theme.fontSizes.title, marginBottom: 4 }}>
           Category: {event.category}
         </Text>
-        <Text style={{ fontSize: 16, marginBottom: 4 }}>
+        <Text style={{ fontSize: theme.fontSizes.title, marginBottom: 4 }}>
           Date: {event.date}
         </Text>
-        <Text style={{ fontSize: 16, marginBottom: 4 }}>
+        <Text style={{ fontSize: theme.fontSizes.title, marginBottom: 4 }}>
           Location: {event.location}
         </Text>
-        <Text style={{ fontSize: 16, marginBottom: 4 }}>
+        <Text style={{ fontSize: theme.fontSizes.title, marginBottom: 4 }}>
           Description: {event.description}
         </Text>
-        <Text style={{ fontSize: 16, marginBottom: 4 }}>
+        <Text style={{ fontSize: theme.fontSizes.title, marginBottom: 4 }}>
           Capacity: {event.capacity}
         </Text>
-        <Text style={{ fontSize: 16, marginBottom: 4 }}>
+        <Text style={{ fontSize: theme.fontSizes.title, marginBottom: 4 }}>
           Spots Remaining: {event.spotsRemaining}
         </Text>
 
         {event.isCancelled && (
           <Text
             style={{
-              fontSize: 16,
+              fontSize: theme.fontSizes.title,
               color: "red",
               fontWeight: "bold",
               marginTop: 8,
@@ -81,7 +81,7 @@ export default function EventDetailsScreen({ route, navigation }) {
           <Button
             mode="outlined"
             onPress={() => navigation.goBack()}
-            style={{ flex: 1, marginRight: 8 }}
+            style={{ fontSize: theme.fontSizes.body, flex: 1, marginRight: 8 }}
           >
             Back
           </Button>
@@ -89,7 +89,7 @@ export default function EventDetailsScreen({ route, navigation }) {
             mode="contained"
             onPress={() => navigation.navigate("EventRegistration", { event })}
             disabled={event.spotsRemaining <= 0 || event.isCancelled}
-            style={{ flex: 1, marginLeft: 8 }}
+            style={{ fontSize: theme.fontSizes.body, flex: 1, marginLeft: 8 }}
           >
             Register
           </Button>

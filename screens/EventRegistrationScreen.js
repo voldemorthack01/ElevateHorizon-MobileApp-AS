@@ -55,7 +55,7 @@ export default function EventRegistrationScreen({ route, navigation }) {
           style={{ 
             marginBottom: 35,
             // fontWeight: "bold", 
-            fontSize: 16,
+            fontSize: theme.fontSizes.body,
             marginTop: 20, 
             textAlign: "center" 
             }}>
@@ -77,7 +77,7 @@ export default function EventRegistrationScreen({ route, navigation }) {
         />
 
         {message && (
-          <Text style={{ fontSize: 16, color: message.includes("success") ? "green" : "red" }}>
+          <Text style={{ fontSize: theme.fontSizes.body, color: message.includes("success") ? "green" : "red" }}>
             {message}
           </Text>
         )}

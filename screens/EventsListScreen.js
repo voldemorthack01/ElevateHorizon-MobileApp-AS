@@ -131,7 +131,7 @@ export default function EventsListScreen({ navigation, route }) {
               }}
               labelStyle={{
                 color: selectedCategory === cat ? "white" : "black", // text color
-                fontSize: 16,
+                fontSize: theme.fontSizes.body,
                 fontWeight: "bold",
                 textAlign: "center",
                 flexShrink: 1, // prevents truncation
@@ -156,7 +156,7 @@ export default function EventsListScreen({ navigation, route }) {
               marginBottom: 12,
             }}
           >
-            <Text style={{ fontSize: 18, fontWeight: "bold" }}>{event.title}</Text>
+            <Text style={{ fontSize: theme.fontSizes.title, fontWeight: "bold" }}>{event.title}</Text>
             <Text style={{ color: theme.colors.secondary }}>{event.category}</Text>
             <Text style={{ color: theme.colors.onSurface }}>{event.date}</Text>
           </TouchableOpacity>
