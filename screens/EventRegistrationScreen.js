@@ -22,7 +22,7 @@ export default function EventRegistrationScreen({ route, navigation }) {
     try {
       const result = await addRegistration(event.id, name, email);
       if (result.success) {
-        setMessage(`Registration successful! - you are booked for ${event.title}.\nNow returning to events list...`);
+        setMessage(`Registration successful! - you are booked for ${event.title} on ${event.date}.\n\nNow returning to events list...`);
         setTimeout(() => {
           navigation.reset({ index: 0, routes: [{ name: "EventsList" }] });
         }, 5500);
@@ -41,16 +41,32 @@ export default function EventRegistrationScreen({ route, navigation }) {
   return (
     <Surface style={{ flex: 1, padding: 16 }} elevation={5}>
       <ScrollView>
-        <Text variant="headlineLarge" style={{ marginBottom: 12 }}>
+        <Text 
+          variant="headlineLarge" 
+          style={{ 
+            marginBottom: 20,
+            fontWeight: "bold", 
+            marginTop: 80, 
+            textAlign: "center" 
+            }}>
           Register for: {event.title}
         </Text>
-        <Text>Available Spots: {event.spotsRemaining}</Text>
+        <Text  
+          style={{ 
+            marginBottom: 35,
+            // fontWeight: "bold", 
+            fontSize: 16,
+            marginTop: 20, 
+            textAlign: "center" 
+            }}>
+          Available Spots: {event.spotsRemaining}
+        </Text>
 
         <TextInput
           label="Name"
           value={name}
           onChangeText={setName}
-          style={{ marginBottom: 12 }}
+          style={{ marginBottom: 20 }}
         />
         <TextInput
           label="Email"
@@ -61,15 +77,36 @@ export default function EventRegistrationScreen({ route, navigation }) {
         />
 
         {message && (
-          <Text style={{ marginBottom: 12, color: message.includes("success") ? "green" : "red" }}>
+          <Text style={{ fontSize: 16, color: message.includes("success") ? "green" : "red" }}>
             {message}
           </Text>
         )}
-
-        <Button mode="contained" onPress={handleRegister} disabled={event.spotsRemaining <= 0}>
+      </ScrollView>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+          marginTop: 20,
+          marginBottom: 20,
+        }}
+      >
+        <Button
+          mode="outlined"
+          onPress={() => navigation.goBack()}
+          style={{ flex: 1, marginRight: 8, marginTop: 16  }}
+        >
+          Back
+        </Button>
+        <Button 
+          mode="contained" 
+          onPress={handleRegister} 
+          disabled={event.spotsRemaining <= 0}
+          style={{ flex: 1, marginRight: 8, marginTop: 16 }}
+          >
           Submit
         </Button>
-      </ScrollView>
+      </View>
+
     </Surface>
   );
 }
