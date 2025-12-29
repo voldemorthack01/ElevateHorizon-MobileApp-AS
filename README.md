@@ -58,3 +58,7 @@ Community members and students who want to easily discover, view, and register f
 
 ## Repository Link
 [GitHub Repository](https://github.com/tafeamir/ElevateHorizon-MobileApp-AS.git)
+
+## Note
+This repo was created and developed by another of my accounts (@tafeamir) where now I have transfered the ownership of that repo to my main account (@voldemorthack01).
+So basically both accounts are me (Amir Sharabiani)
