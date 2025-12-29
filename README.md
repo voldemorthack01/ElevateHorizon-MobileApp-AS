@@ -1,7 +1,6 @@
 # Elevate Horizon Connect
 
 **Author:** Amir Sharabiani  
-**Student No:** 881472750  
 
 ## Project Purpose
 Mobile app to help residents discover and register for local events. Staff can manage events efficiently. MVP uses local JSON data for testing and supports offline mode with cached data.
@@ -50,14 +49,12 @@ The project is now complete and ready for deployment.
 Community members and students who want to easily discover, view, and register for local events, with simple navigation and accessibility for users of all ages.
 
 ## Planned Milestones / Timeline
-- **Week 1:** Finalize scope, wireframes, and navigation flow  
+- **Week 1:** Finalize scope, wireframes (through Figma), and navigation flow  
 - **Week 2:** Build Events List and Event Details screens  
 - **Week 3:** Implement Event Registration and Settings screens  
 - **Week 4:** Testing, peer feedback integration, and UI refinements  
-- **Week 5:** Documentation, diagrams, and final submission  
+- **Week 5:** Documentation, diagrams, and final deplyment.  
 
-## Repository Link
-[GitHub Repository](https://github.com/tafeamir/ElevateHorizon-MobileApp-AS.git)
 
 ## Note
 This repo was created and developed by another of my accounts (@tafeamir) where now I have transfered the ownership of that repo to my main account (@voldemorthack01).
